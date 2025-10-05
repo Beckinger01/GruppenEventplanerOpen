@@ -9,8 +9,8 @@ const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Pimmel Planer",
-  description: "Planer für unsere Events",
+  title: "GruppenEventPlaner",
+  description: "Planer für Events",
   manifest: "/manifest.json",
   themeColor: "#0f172a",
   appleWebApp: {

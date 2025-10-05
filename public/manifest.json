@@ -1,6 +1,6 @@
 {
-  "name": "PimmerRitterEventPlaner",
-  "short_name": "Pimmel Planer",
+  "name": "GruppenEventPlaner",
+  "short_name": "Event Planer",
   "description": "Kalender PWA mit Push Notifications",
   "start_url": "/",
   "display": "standalone",

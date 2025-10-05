@@ -1,0 +1,83 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AvailabilityStatus {
+  AVAILABLE
+  MAYBE
+  UNAVAILABLE
+}
+
+model User {
+  id           Int             @id @default(autoincrement())
+  username     String          @unique
+  pin          String?
+  avatarBytes  Bytes?
+  avatarMime   String?
+  availabilities Availability[]
+  pushSubscriptions PushSubscription[]
+  globalMessages GlobalMessages[]
+}
+
+model EventDate {
+  id            Int             @id @default(autoincrement())
+  day           DateTime        @unique @db.Date
+  availabilities Availability[]
+}
+
+model Availability {
+  userId        Int
+  eventDateId   Int
+  status        AvailabilityStatus @default(AVAILABLE)
+  comment       String?  
+  createdAt     DateTime           @default(now())
+
+  user          User      @relation(fields: [userId], references: [id])
+  eventDate     EventDate @relation(fields: [eventDateId], references: [id])
+
+  @@id([userId, eventDateId])
+  @@index([eventDateId])
+  @@index([userId]) 
+}
+
+model PushSubscription {
+  id        Int    @id @default(autoincrement())
+  userId    Int
+  endpoint  String @unique
+  p256dh    String
+  auth      String
+  createdAt DateTime @default(now())
+
+  user      User @relation(fields: [userId], references: [id])
+}
+
+model ReminderSent {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  day       DateTime
+  createdAt DateTime @default(now())
+
+  @@unique([userId, day])
+}
+
+model GlobalMessages {
+  id             Int       @id @default(autoincrement())
+  userId         Int
+  createdAt      DateTime  @default(now()) // Default-Wert hinzugefügt
+  text           String
+
+  user           User      @relation(fields: [userId], references: [id])
+
+  @@index([createdAt])
+}

@@ -1,0 +1,38 @@
+[
+    {
+        "id": "1",
+        "name": "Niklas",
+        "used": "false",
+        "avatar":"https://i.imgur.com/pwpWaWu.jpg"
+    },
+    {
+        "id": "2",
+        "name": "Bjarne",
+        "used": "false",
+        "avatar":"https://i.imgur.com/pwpWaWu.jpg"
+    },
+    {
+        "id": "3",
+        "name": "Mark",
+        "used": "false",
+        "avatar":"https://i.imgur.com/pwpWaWu.jpg"
+    },
+    {
+        "id": "4",
+        "name": "Charlotte",
+        "used": "false",
+        "avatar":"https://i.imgur.com/pwpWaWu.jpg"
+    },
+    {
+        "id": "5",
+        "name": "Jan-Erik",
+        "used": "false",
+        "avatar":"https://i.imgur.com/pwpWaWu.jpg"
+    },
+    {
+        "id": "6",
+        "name": "Jano",
+        "used": "false",
+        "avatar":"https://i.imgur.com/pwpWaWu.jpg"
+    }
+]
